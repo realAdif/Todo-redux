@@ -4,6 +4,9 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    @apply bg-black;
+  }
   p {
     @apply text-[18px];
   }

@@ -1,18 +1,20 @@
 import CreateTask from './components/CreateTask';
 import Header from './components/Header';
 import Navbar from './components/Navbar';
+import ViewTask from './components/ViewTask';
 
 function App() {
   return (
-    <div>
+    <main>
       <div className=" relative">
         <Header />
-        <main className=" max-w-screen-md absolute  bottom-12 left-0 right-0 m-auto">
+        <div className=" w-full max-w-lg  mx-auto px-4 absolute -bottom-10 left-1/2 transform -translate-x-1/2 ">
           <Navbar />
           <CreateTask />
-        </main>
+          <ViewTask />
+        </div>
       </div>
-    </div>
+    </main>
   );
 }
 export default App;
