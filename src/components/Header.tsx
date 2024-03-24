@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from '../redux/store/store';
 //Mobile
 import bg_darkmobile from '../assets/bg-mobile-dark.jpg';
 import bg_lightmobile from '../assets/bg-mobile-light.jpg';
@@ -6,24 +7,22 @@ import bg_lightmobile from '../assets/bg-mobile-light.jpg';
 import bg_dark from '../assets/bg-desktop-dark.jpg';
 import bg_light from '../assets/bg-desktop-light.jpg';
 
-function LightMode() {
-  return <img src={bg_lightmobile} alt="bg" className="mx-auto w-full" />;
-}
-function DarkMode() {
-  return <img src={bg_darkmobile} alt="bg" className="mx-auto w-full" />;
-}
-
 export default function Header() {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const isDarkMode = useSelector((state: RootState) => state.theme.isDarkMode);
 
   return (
     <div>
       {isDarkMode ? (
-        <div className="hidden md:block">
-          <img src={bg_dark} alt="" />
+        <div>
+          <img
+            src={bg_dark}
+            alt="/"
+            className="w-full hidden md:block max-h-[400px]"
+          />
+          <img src={bg_darkmobile} alt="/" className="w-full md:hidden" />
         </div>
       ) : (
-        <div className="block">
+        <div>
           <img
             src={bg_light}
             alt=""
