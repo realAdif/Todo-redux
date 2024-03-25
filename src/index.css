@@ -5,7 +5,7 @@
 
 @layer base {
   html {
-    @apply bg-black;
+    @apply bg-very-dark-blue-dark;
   }
   p {
     @apply text-[18px];
