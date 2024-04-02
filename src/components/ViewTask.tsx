@@ -15,7 +15,7 @@ function ViewTask() {
       {todos.map((todo: Todo) => (
         <div
           key={todo.id}
-          className="flex justify-between items-center py-4 px-4  even:border-y border-french-gray"
+          className="flex justify-between items-center py-4 px-4  even:border-y border-french-gray dark:border-dark-grayish-blue"
         >
           <div className="flex">
             <Checkbox isChecked={todo.completed} taskId={todo.id} />
@@ -28,14 +28,18 @@ function ViewTask() {
           </button>
         </div>
       ))}
-      <div className="flex justify-between text-xs text-french-gray p-4 border-t border-french-gray ">
-        <p>{todos.length} items left</p>
+      <div
+        className={`flex justify-between text-xs  p-4 ${
+          todos.length <= 0 && 'border-0'
+        } `}
+      >
+        <span>{todos.length} items left</span>
         <div className="hidden md:block">
           <button className="mx-2">All</button>
           <button className="mx-2">Active</button>
           <button className="mx-2">Completed</button>
         </div>
-        <p>Clear Completed</p>
+        <span className="hover:underline cursor-pointer">Clear Completed</span>
       </div>
     </div>
   );

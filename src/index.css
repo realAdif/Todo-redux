@@ -8,10 +8,10 @@
     @apply bg-very-dark-blue-dark;
   }
   body:not(.dark) {
-    @apply bg-light-gray;
+    @apply bg-lavender-web;
   }
   p {
-    @apply text-[18px];
+    @apply text-dark-grayish-blue dark:text-light-gray-dark font-semibold;
   }
   h1 {
     @apply text-3xl font-semibold;

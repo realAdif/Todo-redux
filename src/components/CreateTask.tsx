@@ -18,7 +18,7 @@ function CreateTask() {
   return (
     <div className="bg-white dark:bg-very-dark-desaturated-blue drop-shadow-lg py-4 rounded flex items-center">
       <input
-        className="w-full outline-none mx-2 bg-transparent text-light-gray"
+        className="w-full outline-none mx-2 bg-transparent dark:text-white dark:placeholder-gray-400 "
         type="text"
         placeholder="Create a new todo..."
         value={taskText}

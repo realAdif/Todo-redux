@@ -18,12 +18,10 @@ export default {
         'french-gray': 'hsl(233, 11%, 84%)',
         'cool-gray': ' hsl(236, 9%, 61%)',
         'dark-grayish-blue': 'hsl(235, 19%, 35%)',
-        'very-dark-blue': 'hsl(235, 19%, 35%)',
         // dark theme
         'very-dark-blue-dark': 'hsl(235, 21%, 11%)',
         'very-dark-desaturated-blue': 'hsl(235, 24%, 19%)',
         'light-gray-dark': 'hsl(234, 39%, 85%)',
-        'dark-grayish-blue-dark': 'hsl(236, 33%, 92%)',
         'very-dark-grayish-blue': 'hsl(234, 11%, 52%)',
         'very-dark-grayish-blue-dark': 'hsl(233, 14%, 35%)',
         'desaturated-blue': 'hsl(237, 14%, 26%)',
