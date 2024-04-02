@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addTodo } from '../redux/slice/todoListSlice';
-import Checkbox from './Checkbox';
+// import Checkbox from './Checkbox';
 
 function CreateTask() {
   const dispatch = useDispatch();
@@ -16,10 +16,9 @@ function CreateTask() {
   };
 
   return (
-    <div className="bg-very-dark-desaturated-blue py-4 rounded flex items-center">
-      <Checkbox />
+    <div className="bg-white dark:bg-very-dark-desaturated-blue drop-shadow-lg py-4 rounded flex items-center">
       <input
-        className="w-full outline-none mr-2 bg-transparent text-light-gray"
+        className="w-full outline-none mx-2 bg-transparent text-light-gray"
         type="text"
         placeholder="Create a new todo..."
         value={taskText}

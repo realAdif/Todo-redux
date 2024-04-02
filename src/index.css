@@ -4,8 +4,11 @@
 @tailwind utilities;
 
 @layer base {
-  html {
+  body.dark {
     @apply bg-very-dark-blue-dark;
+  }
+  body:not(.dark) {
+    @apply bg-light-gray;
   }
   p {
     @apply text-[18px];

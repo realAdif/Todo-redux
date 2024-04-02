@@ -10,11 +10,11 @@ function Navbar() {
   const handleToggleTheme = () => {
     dispatch(toggleTheme());
   };
-  const isDarkMode = useSelector((state: RootState) => state.theme.isDarkMode);
-  const icon = isDarkMode ? moon_icon : sun_icon;
+  const isDarkMode = useSelector((state: RootState) => state.theme.theme);
+  const icon = isDarkMode == 'light' ? moon_icon : sun_icon;
 
   return (
-    <div className="text-white flex justify-between items-center my-4">
+    <div className="text-white  flex justify-between items-center my-4 ">
       <h1>TODO</h1>
       <button onClick={handleToggleTheme}>
         <img src={icon} alt="icon" />

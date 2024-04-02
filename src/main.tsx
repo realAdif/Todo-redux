@@ -5,6 +5,11 @@ import { Provider } from 'react-redux';
 import { store } from './redux/store/store.ts';
 import './index.css';
 
+store.subscribe(() => {
+  const isDarkMode = store.getState().theme.theme === 'dark';
+  document.body.classList.toggle('dark', isDarkMode);
+});
+
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <Provider store={store}>

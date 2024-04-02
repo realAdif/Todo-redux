@@ -1,6 +1,6 @@
 import crossIcon from '../assets/icon-cross.svg';
 import { useSelector, useDispatch } from 'react-redux';
-import { removeTodo } from '../redux/slice/todoListSlice';
+import { removeTodo, Todo } from '../redux/slice/todoListSlice';
 import Checkbox from './Checkbox';
 
 function ViewTask() {
@@ -11,15 +11,17 @@ function ViewTask() {
   };
 
   return (
-    <div className="bg-very-dark-desaturated-blue text-white  w-full mt-6 rounded-md drop-shadow-lg">
-      {todos.map((todo) => (
+    <div className="bg-white dark:bg-very-dark-desaturated-blue text-black dark:text-white  w-full mt-6 rounded drop-shadow-lg">
+      {todos.map((todo: Todo) => (
         <div
           key={todo.id}
           className="flex justify-between items-center py-4 px-4  even:border-y border-french-gray"
         >
           <div className="flex">
             <Checkbox isChecked={todo.completed} taskId={todo.id} />
-            <p className="ml-2">{todo.title}</p>
+            <p className={`ml-2 ${todo.completed && 'line-through'} `}>
+              {todo.title}
+            </p>
           </div>
           <button onClick={() => handleRemoveTodo(todo.id)}>
             <img src={crossIcon} alt="cross icon" />

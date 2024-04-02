@@ -8,11 +8,11 @@ import bg_dark from '../assets/bg-desktop-dark.jpg';
 import bg_light from '../assets/bg-desktop-light.jpg';
 
 export default function Header() {
-  const isDarkMode = useSelector((state: RootState) => state.theme.isDarkMode);
-
+  const themeMode = useSelector((state: RootState) => state.theme.theme);
+  console.log(themeMode);
   return (
     <div>
-      {isDarkMode ? (
+      {themeMode === 'dark' ? (
         <div>
           <img
             src={bg_dark}

@@ -37,9 +37,14 @@ const todoListSlice = createSlice({
       }
       localStorage.setItem('todos', JSON.stringify(state.todos));
     },
+    // completeFiller(state) {
+    //   const completedTodos = state.todos.filter((todo) => todo.completed);
+    //   return { ...state, todos: completedTodos };
+    // },
   },
 });
 
+export type { Todo };
 export const { addTodo, removeTodo, toggleTodoCompleted } =
   todoListSlice.actions;
 export default todoListSlice.reducer;
