@@ -1,5 +1,6 @@
 import crossIcon from '../assets/icon-cross.svg';
 import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from '../redux/store/store';
 import {
   removeTodo,
   clearCompletedTodo,
@@ -9,21 +10,23 @@ import {
 import Checkbox from './Checkbox';
 
 function ViewTask() {
-  const filter = useSelector((state) => state.todoList.filter);
-  const todosList = useSelector((state) => state.todoList.todos);
+  const filter = useSelector((state: RootState) => state.todoList.filter);
+  const todosList = useSelector((state: RootState) => state.todoList.todos);
   const dispatch = useDispatch();
 
   const handleRemoveTodo = (id: number) => {
     dispatch(removeTodo(id));
   };
+
   const handleFilterChange = (newFilter: 'all' | 'active' | 'completed') => {
     dispatch(setFilter(newFilter));
   };
 
-  const filterTodos = todosList.filter((todo) => {
+  const filterTodos = todosList.filter((todo: Todo) => {
     if (filter === 'all') return true;
     if (filter === 'active') return !todo.completed;
     if (filter === 'completed') return todo.completed;
+    return true; // Default to true to avoid TypeScript error
   });
 
   return (
@@ -72,7 +75,7 @@ function ViewTask() {
         </div>
         <span
           className="hover:underline cursor-pointer"
-          onClick={() => dispatch(clearCompletedTodo(todosList))}
+          onClick={() => dispatch(clearCompletedTodo())}
         >
           Clear Completed
         </span>

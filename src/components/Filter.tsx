@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { setFilter } from '../redux/slice/todoListSlice';
-
+import { RootState } from '../redux/store/store';
 export default function Filter() {
-  const filter = useSelector((state) => state.todoList.filter);
+  const filter = useSelector((state: RootState) => state.todoList.filter);
   const dispatch = useDispatch();
 
   const handleFilterChange = (newFilter: 'all' | 'active' | 'completed') => {
