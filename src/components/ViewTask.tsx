@@ -30,6 +30,11 @@ function ViewTask() {
       ))}
       <div className="flex justify-between text-xs text-french-gray p-4 border-t border-french-gray ">
         <p>{todos.length} items left</p>
+        <div className="hidden md:block">
+          <button className="mx-2">All</button>
+          <button className="mx-2">Active</button>
+          <button className="mx-2">Completed</button>
+        </div>
         <p>Clear Completed</p>
       </div>
     </div>
