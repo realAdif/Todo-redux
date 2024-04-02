@@ -11,15 +11,15 @@ function ViewTask() {
   };
 
   return (
-    <div className="bg-white w-full mt-6 rounded-md drop-shadow-lg">
+    <div className="bg-very-dark-desaturated-blue text-white  w-full mt-6 rounded-md drop-shadow-lg">
       {todos.map((todo) => (
         <div
           key={todo.id}
           className="flex justify-between items-center py-4 px-4  even:border-y border-french-gray"
         >
           <div className="flex">
-            <Checkbox />
-            <span className="ml-2">{todo.title}</span>
+            <Checkbox isChecked={todo.completed} taskId={todo.id} />
+            <p className="ml-2">{todo.title}</p>
           </div>
           <button onClick={() => handleRemoveTodo(todo.id)}>
             <img src={crossIcon} alt="cross icon" />
