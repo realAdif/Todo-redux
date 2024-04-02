@@ -1,9 +1,13 @@
-import { useState } from 'react';
 import checkIcon from '../assets/icon-check.svg';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { toggleTodoCompleted } from '../redux/slice/todoListSlice';
 
-function Checkbox({ isChecked, taskId }) {
+interface CheckboxProps {
+  isChecked: boolean;
+  taskId: number;
+}
+
+function Checkbox({ isChecked, taskId }: CheckboxProps) {
   const dispatch = useDispatch();
   const handleToggleChecked = () => {
     dispatch(toggleTodoCompleted(taskId));
