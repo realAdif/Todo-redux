@@ -1,18 +1,23 @@
 import crossIcon from '../assets/icon-cross.svg';
 import { useSelector, useDispatch } from 'react-redux';
-import { removeTodo, Todo } from '../redux/slice/todoListSlice';
+import {
+  removeTodo,
+  clearCompletedTodo,
+  Todo,
+} from '../redux/slice/todoListSlice';
 import Checkbox from './Checkbox';
 
 function ViewTask() {
-  const todos = useSelector((state) => state.todoList.todos);
+  const todosList = useSelector((state) => state.todoList.todos);
   const dispatch = useDispatch();
+
   const handleRemoveTodo = (id: number) => {
     dispatch(removeTodo(id));
   };
 
   return (
     <div className="bg-white dark:bg-very-dark-desaturated-blue text-black dark:text-white  w-full mt-6 rounded drop-shadow-lg">
-      {todos.map((todo: Todo) => (
+      {todosList.map((todo: Todo) => (
         <div
           key={todo.id}
           className="flex justify-between items-center py-4 px-4  even:border-y border-french-gray dark:border-dark-grayish-blue"
@@ -30,16 +35,21 @@ function ViewTask() {
       ))}
       <div
         className={`flex justify-between text-xs  p-4 ${
-          todos.length <= 0 && 'border-0'
+          todosList.length <= 0 && 'border-0'
         } `}
       >
-        <span>{todos.length} items left</span>
+        <span>{todosList.length} items left</span>
         <div className="hidden md:block">
           <button className="mx-2">All</button>
           <button className="mx-2">Active</button>
           <button className="mx-2">Completed</button>
         </div>
-        <span className="hover:underline cursor-pointer">Clear Completed</span>
+        <span
+          className="hover:underline cursor-pointer"
+          onClick={() => dispatch(clearCompletedTodo(todosList))}
+        >
+          Clear Completed
+        </span>
       </div>
     </div>
   );

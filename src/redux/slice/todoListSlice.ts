@@ -37,14 +37,14 @@ const todoListSlice = createSlice({
       }
       localStorage.setItem('todos', JSON.stringify(state.todos));
     },
-    // completeFiller(state) {
-    //   const completedTodos = state.todos.filter((todo) => todo.completed);
-    //   return { ...state, todos: completedTodos };
-    // },
+    clearCompletedTodo(state) {
+      state.todos = state.todos.filter((todo) => !todo.completed);
+      localStorage.setItem('todos', JSON.stringify(state.todos));
+    },
   },
 });
 
 export type { Todo };
-export const { addTodo, removeTodo, toggleTodoCompleted } =
+export const { addTodo, removeTodo, toggleTodoCompleted, clearCompletedTodo } =
   todoListSlice.actions;
 export default todoListSlice.reducer;
