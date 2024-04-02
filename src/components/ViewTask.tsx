@@ -20,9 +20,15 @@ function ViewTask() {
     dispatch(setFilter(newFilter));
   };
 
+  const filterTodos = todosList.filter((todo) => {
+    if (filter === 'all') return true;
+    if (filter === 'active') return !todo.completed;
+    if (filter === 'completed') return todo.completed;
+  });
+
   return (
     <div className="bg-white dark:bg-very-dark-desaturated-blue text-black dark:text-white  w-full mt-6 rounded drop-shadow-lg">
-      {todosList.map((todo: Todo) => (
+      {filterTodos.map((todo: Todo) => (
         <div
           key={todo.id}
           className="flex justify-between items-center py-4 px-4  even:border-y border-french-gray dark:border-dark-grayish-blue"
@@ -43,7 +49,7 @@ function ViewTask() {
           todosList.length <= 0 && 'border-0'
         } `}
       >
-        <span>{todosList.length} items left</span>
+        <span>{filterTodos.length} items left</span>
         <div className="hidden md:block">
           <button
             className={`mx-2 ${filter === 'all' && 'text-blue-300'} `}
