@@ -5,7 +5,7 @@ import Filter from './components/Filter';
 import Header from './components/Header';
 import Navbar from './components/Navbar';
 import ViewTask from './components/ViewTask';
-
+import { RootState } from './redux/store/store';
 export default function App() {
   const isDarkMode = useSelector((state: RootState) => state.theme.theme);
   return (
