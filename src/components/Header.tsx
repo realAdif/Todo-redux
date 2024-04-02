@@ -9,7 +9,6 @@ import bg_light from '../assets/bg-desktop-light.jpg';
 
 export default function Header() {
   const themeMode = useSelector((state: RootState) => state.theme.theme);
-  console.log(themeMode);
   return (
     <div>
       {themeMode === 'dark' ? (

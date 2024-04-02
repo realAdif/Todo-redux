@@ -3,16 +3,21 @@ import { useSelector, useDispatch } from 'react-redux';
 import {
   removeTodo,
   clearCompletedTodo,
+  setFilter,
   Todo,
 } from '../redux/slice/todoListSlice';
 import Checkbox from './Checkbox';
 
 function ViewTask() {
+  const filter = useSelector((state) => state.todoList.filter);
   const todosList = useSelector((state) => state.todoList.todos);
   const dispatch = useDispatch();
 
   const handleRemoveTodo = (id: number) => {
     dispatch(removeTodo(id));
+  };
+  const handleFilterChange = (newFilter: 'all' | 'active' | 'completed') => {
+    dispatch(setFilter(newFilter));
   };
 
   return (
@@ -40,9 +45,24 @@ function ViewTask() {
       >
         <span>{todosList.length} items left</span>
         <div className="hidden md:block">
-          <button className="mx-2">All</button>
-          <button className="mx-2">Active</button>
-          <button className="mx-2">Completed</button>
+          <button
+            className={`mx-2 ${filter === 'all' && 'text-blue-300'} `}
+            onClick={() => handleFilterChange('all')}
+          >
+            All
+          </button>
+          <button
+            className={`mx-2 ${filter === 'active' && 'text-blue-300'} `}
+            onClick={() => handleFilterChange('active')}
+          >
+            Active
+          </button>
+          <button
+            className={`mx-2 ${filter === 'completed' && 'text-blue-300'} `}
+            onClick={() => handleFilterChange('completed')}
+          >
+            Completed
+          </button>
         </div>
         <span
           className="hover:underline cursor-pointer"

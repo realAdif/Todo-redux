@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface Todo {
   id: number;
@@ -7,9 +7,11 @@ interface Todo {
 }
 interface TodoState {
   todos: Todo[];
+  filter: 'all' | 'active' | 'completed';
 }
 const initialState: TodoState = {
   todos: JSON.parse(localStorage.getItem('todos') || '[]'),
+  filter: 'all',
 };
 
 const todoListSlice = createSlice({
@@ -41,10 +43,18 @@ const todoListSlice = createSlice({
       state.todos = state.todos.filter((todo) => !todo.completed);
       localStorage.setItem('todos', JSON.stringify(state.todos));
     },
+    setFilter(state, action: PayloadAction<'all' | 'active' | 'completed'>) {
+      state.filter = action.payload;
+    },
   },
 });
 
 export type { Todo };
-export const { addTodo, removeTodo, toggleTodoCompleted, clearCompletedTodo } =
-  todoListSlice.actions;
+export const {
+  addTodo,
+  removeTodo,
+  toggleTodoCompleted,
+  clearCompletedTodo,
+  setFilter,
+} = todoListSlice.actions;
 export default todoListSlice.reducer;
