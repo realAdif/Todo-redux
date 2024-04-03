@@ -46,6 +46,17 @@ const todoListSlice = createSlice({
     setFilter(state, action: PayloadAction<'all' | 'active' | 'completed'>) {
       state.filter = action.payload;
     },
+    reorderTodos(
+      state,
+      action: PayloadAction<{ startIndex: number; endIndex: number }>
+    ) {
+      const { startIndex, endIndex } = action.payload;
+      const newTodos = Array.from(state.todos);
+      const [movedTodo] = newTodos.splice(startIndex, 1);
+      newTodos.splice(endIndex, 0, movedTodo);
+      state.todos = newTodos;
+      localStorage.setItem('todos', JSON.stringify(state.todos));
+    },
   },
 });
 
@@ -56,5 +67,6 @@ export const {
   toggleTodoCompleted,
   clearCompletedTodo,
   setFilter,
+  reorderTodos,
 } = todoListSlice.actions;
 export default todoListSlice.reducer;
