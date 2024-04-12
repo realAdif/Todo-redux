@@ -1,6 +1,6 @@
 # Todo List App
 
-This is a simple Todo List application built using React, Redux, and Tailwind CSS. It allows users to manage their tasks by adding, removing, marking as completed, and filtering tasks.
+This is a Todo List application built using React, Redux, and Tailwind CSS. It allows users to manage their tasks by adding, removing, marking as completed, and filtering tasks.
 
 ## Features
 
